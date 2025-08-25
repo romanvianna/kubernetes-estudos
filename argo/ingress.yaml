@@ -4,13 +4,13 @@ metadata:
   name: argocd-server-ingress
   namespace: argocd
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    # cert-manager.io/cluster-issuer: letsencrypt-prod # Descomentar se tiver com o cert-manager configurado
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: nginx
   rules:
-  - host: argocd.simplificait.com.br
+  - host: argocd.localhost
     http:
       paths:
       - path: /
@@ -20,7 +20,7 @@ spec:
             name: argocd-server
             port:
               name: https
-  tls:
-  - hosts:
-    - argocd.simplificait.com.br
-    secretName: argocd-server-tls
+  # tls: Descomentar se tiver com o cert-manager configurado
+  # - hosts:
+  #   - argocd.localhost
+  #   secretName: argocd-server-tls

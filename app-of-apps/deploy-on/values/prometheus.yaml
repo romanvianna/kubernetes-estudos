@@ -1,44 +1,44 @@
 alertmanager:
   enabled: true
   ingress:
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    tls:
-    - hosts:
-      - alertmanager.simplificait.com.br  # Substitua pelo seu domínio
-      secretName: letsencrypt-alertmanager
+    # annotations: # Descomentar se tiver com o cert-manager configurado
+    #   cert-manager.io/cluster-issuer: letsencrypt-prod
+    # tls: # Descomentar se tiver com o cert-manager configurado
+    # - hosts:
+    #   - alertmanager.localhost  # Substitua pelo seu domínio
+    #   secretName: letsencrypt-alertmanager
     enabled: true
     ingressClassName: nginx
     hosts:
-      - alertmanager.simplificait.com.br
+      - alertmanager.localhost
     path: /
     pathType: Prefix
 grafana:
   ingress:
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    tls:
-    - hosts:
-      - monitoramento.simplificait.com.br  # Substitua pelo seu domínio
-      secretName: letsencrypt-monitoramento
+    # annotations: # Descomentar se tiver com o cert-manager configurado
+    #   cert-manager.io/cluster-issuer: letsencrypt-prod
+    # tls: # Descomentar se tiver com o cert-manager configurado
+    # - hosts:
+    #   - monitoramento.localhost  # Substitua pelo seu domínio
+    #   secretName: letsencrypt-monitoramento
     enabled: true
     ingressClassName: nginx
     hosts:
-      - monitoramento.simplificait.com.br
+      - monitoramento.localhost
     path: /
     pathType: Prefix
 prometheus:
   ingress:
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    tls:
-    - hosts:
-      - prometheus.simplificait.com.br  # Substitua pelo seu domínio
-      secretName: letsencrypt-prometheus
+    # annotations: # Descomentar se tiver com o cert-manager configurado
+    #   cert-manager.io/cluster-issuer: letsencrypt-prod
+    # tls: # Descomentar se tiver com o cert-manager configurado
+    # - hosts:
+    #   - prometheus.localhost  # Substitua pelo seu domínio
+    #   secretName: letsencrypt-prometheus
     enabled: true
     ingressClassName: nginx
     hosts:
-      - prometheus.simplificait.com.br
+      - prometheus.localhost
     path: /
     pathType: Prefix
   securityContext:
