@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: "73.1.0"
+    chart: kube-prometheus-stack
+    helm:
+      valueFiles:
+      - $values/app-of-apps/deploy-on/values/prometheus.yaml
+  - repoURL: 'https://git.hubii.io/hubii-infra/kubernetes-tools.git'
+    targetRevision: master
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - ServerSideApply=true
+    # automated:
+    #   prune: true
+    #   allowEmpty: true
+    #   selfHeal: true

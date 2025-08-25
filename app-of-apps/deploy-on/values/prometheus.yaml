@@ -1,0 +1,59 @@
+alertmanager:
+  enabled: true
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+    - hosts:
+      - alertmanager.simplificait.com.br  # Substitua pelo seu domínio
+      secretName: letsencrypt-alertmanager
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - alertmanager.simplificait.com.br
+    path: /
+    pathType: Prefix
+grafana:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+    - hosts:
+      - monitoramento.simplificait.com.br  # Substitua pelo seu domínio
+      secretName: letsencrypt-monitoramento
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - monitoramento.simplificait.com.br
+    path: /
+    pathType: Prefix
+prometheus:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+    - hosts:
+      - prometheus.simplificait.com.br  # Substitua pelo seu domínio
+      secretName: letsencrypt-prometheus
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - prometheus.simplificait.com.br
+    path: /
+    pathType: Prefix
+  securityContext:
+    fsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+defaultRules:
+  rules:
+    kubeSchedulerAlerting: false
+    kubeProxy: false
+    kubeControllerManager: false
+coreDns:
+  serviceMonitor:
+    enabled: false
+kubeScheduler:
+  serviceMonitor:
+    enabled: false
+

@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/romanvianna/kubernetes-estudos.git
     path: app-of-apps/deploy-on
-    targetRevision: master
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

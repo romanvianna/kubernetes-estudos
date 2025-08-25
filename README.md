@@ -9,4 +9,5 @@ kubectl get pods --namespace cert-manager --watch
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl apply -f argo/ingress.yaml
+kubectl apply -f argo/app-of-apps.yaml
 #
