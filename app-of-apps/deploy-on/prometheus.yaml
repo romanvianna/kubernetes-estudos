@@ -12,7 +12,7 @@ spec:
     helm:
       valueFiles:
       - $values/app-of-apps/deploy-on/values/prometheus.yaml
-  - repoURL: 'https://git.hubii.io/hubii-infra/kubernetes-tools.git'
+  - repoURL: 'https://github.com/romanvianna/kubernetes-estudos.git'
     targetRevision: master
     ref: values
   destination:
